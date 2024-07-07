@@ -1,18 +1,32 @@
+<?php
+
+/** @var yii\web\View $this */
+/** @var string $content */
+
+use app\assets\AppAsset;
+use app\widgets\Alert;
+use yii\bootstrap5\Breadcrumbs;
+use yii\bootstrap5\Html;
+use yii\bootstrap5\Nav;
+use yii\bootstrap5\NavBar;
+
+AppAsset::register($this);
+
+$this->registerCsrfMetaTags();
+$this->registerMetaTag(['charset' => Yii::$app->charset], 'charset');
+$this->registerMetaTag(['name' => 'viewport', 'content' => 'width=device-width, initial-scale=1, shrink-to-fit=no']);
+$this->registerMetaTag(['name' => 'description', 'content' => $this->params['meta_description'] ?? '']);
+$this->registerMetaTag(['name' => 'keywords', 'content' => $this->params['meta_keywords'] ?? '']);
+$this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii::getAlias('@web/favicon.ico')]);
+?>
+<?php $this->beginPage() ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?= Yii::$app->language ?>" class="h-100">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>Home | E-Shopper</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/prettyPhoto.css" rel="stylesheet">
-    <link href="css/price-range.css" rel="stylesheet">
-    <link href="css/animate.css" rel="stylesheet">
-	<link href="css/main.css" rel="stylesheet">
-	<link href="css/responsive.css" rel="stylesheet">
+<title><?= Html::encode($this->title) ?></title>
+<?php $this->head() ?>
+    
+
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
@@ -25,6 +39,7 @@
 </head><!--/head-->
 
 <body>
+<?php $this->beginBody() ?>
 	<header id="header"><!--header-->
 		<div class="header_top"><!--header_top-->
 			<div class="container">
@@ -1059,11 +1074,7 @@
 	
 
   
-    <script src="js/jquery.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/jquery.scrollUp.min.js"></script>
-	<script src="js/price-range.js"></script>
-    <script src="js/jquery.prettyPhoto.js"></script>
-    <script src="js/main.js"></script>
+	<?php $this->endBody() ?>
 </body>
 </html>
+<?php $this->endPage() ?>
