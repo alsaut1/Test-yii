@@ -2,6 +2,15 @@
 
  $('#sl2').slider();
 
+ //$('.catalog').dcAccordion();
+ $(document).ready(function() {
+    //alert("main.js is loaded and executed.");
+    $('.catalog').dcAccordion({
+		speed:300
+	});
+});
+
+
 	var RGBChange = function() {
 	  $('#RGB').css('background', 'rgb('+r.getValue()+','+g.getValue()+','+b.getValue()+')')
 	};	
